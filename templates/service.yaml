@@ -1,0 +1,23 @@
+{{ $env := .Values.env }}
+{{- range $color, $colorValues := .Values.colors }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "example-{{ $color }}"
+  labels:
+    app: example
+    color: {{ $color }}
+    env: {{ $env }}
+spec:
+  type: {{ $colorValues.service.type }}
+  ports:
+    - port: {{ $colorValues.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: example
+    color: {{ $color }}
+    env: {{ $env }}
+{{- end }}

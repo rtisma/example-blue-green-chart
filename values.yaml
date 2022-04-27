@@ -1,0 +1,10 @@
+env: dev
+colors:
+  green:
+    service:
+      type: ClusterIP
+      port: 80
+  blue:
+    service:
+      type: ClusterIP
+      port: 80
